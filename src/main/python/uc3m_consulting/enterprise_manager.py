@@ -1,12 +1,11 @@
 """Module for enterprise_manager """
 
-# import json
-# import os
+import json
+import os
 import re
 from datetime import datetime
-# from uc3m_consulting.enterprise_project import EnterpriseProject
-from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
-
+from .enterprise_project import EnterpriseProject
+from .enterprise_management_exception import EnterpriseManagementException
 
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
@@ -34,6 +33,9 @@ class EnterpriseManager:
 
         return True
 
+    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-positional-arguments
+    # pylint: disable=too-many-branches
     def register_project(
             self,
             company_cif: str,
@@ -97,3 +99,28 @@ class EnterpriseManager:
 
         if round(budget, 2) != budget:
             raise EnterpriseManagementException("Budget must have 2 decimals")
+
+        new_project = EnterpriseProject(
+            company_cif,
+            project_acronym,
+            operation_name,
+            department,
+            date,
+            budget
+        )
+        file_path = "corporate_operations.json"
+
+        data = []
+
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as file:
+                try:
+                    data = json.load(file)
+                except json.JSONDecodeError:
+                    data = []
+
+        data.append(new_project.to_json())
+
+        with open(file_path, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)
+        return new_project.project_id

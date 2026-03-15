@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 
 class EnterpriseProject:
     """Class representing a transfer request"""
+    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-positional-arguments
     def __init__(self,
                  company_cif: str,
                  project_acronym: str,
