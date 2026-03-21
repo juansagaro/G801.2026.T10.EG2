@@ -63,9 +63,14 @@ class EnterpriseManager:
         if not 10 <= len(operation_name) <= 30:
             raise EnterpriseManagementException("operation_name length is not valid")
 
+        if not isinstance(department, str):
+            raise EnterpriseManagementException("department is not a valid string")
+
+        if department not in ("HR", "FINANCE", "LEGAL", "LOGISTICS"):
+            raise EnterpriseManagementException("department value is not valid")
+
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
     def check_project_budget(self, project_id: str):
         """Calculates the balance of a project"""
-
