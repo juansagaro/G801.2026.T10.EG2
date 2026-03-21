@@ -1,4 +1,5 @@
 """Module """
+from .enterprise_management_exception import EnterpriseManagementException
 
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
@@ -16,6 +17,9 @@ class EnterpriseManager:
                          operation_name: str, department: str,
                          date: str, budget: float):
         """Registers a new project and returns its MD5 project_id"""
+
+        if not isinstance(company_cif, str):
+            raise EnterpriseManagementException("CIF is not a valid string")
 
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
