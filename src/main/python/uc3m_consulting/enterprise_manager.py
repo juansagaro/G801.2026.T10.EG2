@@ -21,6 +21,9 @@ class EnterpriseManager:
         if not isinstance(company_cif, str):
             raise EnterpriseManagementException("CIF is not a valid string")
 
+        if len(company_cif) != 9:
+            raise EnterpriseManagementException("CIF length is not valid")
+
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
