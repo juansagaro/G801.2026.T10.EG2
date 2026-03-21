@@ -11,6 +11,21 @@ class EnterpriseManager:
         """Returns True if CIF is valid"""
         return True
 
+    @staticmethod
+    def __validate_cif_algorithm(cif: str):
+        """Validates the CIF control digit"""
+        cif_letters = "JABCDEFGHI"
+        digits = [int(d) for d in cif[1:8]]
+        odd_sum = digits[0] + digits[2] + digits[4] + digits[6]
+        even_sum = 0
+        for d in digits[1::2]:
+            double = d * 2
+            even_sum += double if double < 10 else double - 9
+        total = odd_sum + even_sum
+        control_digit = (10 - (total % 10)) % 10
+        control_char = cif_letters[control_digit]
+        return cif[-1] in (str(control_digit), control_char)
+
     # pylint: disable=too-many-arguments
     # pylint: disable=too-many-positional-arguments
     def register_project(self, company_cif: str, project_acronym: str,
@@ -30,6 +45,8 @@ class EnterpriseManager:
         if not company_cif[1:8].isdigit():
             raise EnterpriseManagementException("Invalid CIF code")
 
+        if not self.__validate_cif_algorithm(company_cif):
+            raise EnterpriseManagementException("Invalid CIF code")
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
