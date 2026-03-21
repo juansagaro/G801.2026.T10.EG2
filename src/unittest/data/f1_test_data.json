@@ -47,5 +47,15 @@
   {"idTest": "TC-F1-46", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 1000000.01},
   {"idTest": "TC-F1-47", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 50000.00},
   {"idTest": "TC-F1-48", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 1000000.00},
-  {"idTest": "TC-F1-49", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 100000.00}
+  {"idTest": "TC-F1-49", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-50", "companyCIF": "A28015622", "projectAcronym": "PROJX12", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-51", "companyCIF": "A28015622", "projectAcronym": "PROJX1234", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-52", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "ProyectoAA1", "department": "HR", "date": "01/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-53", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto con nombre de 29 char!!", "department": "HR", "date": "01/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-54", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "02/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-55", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "30/03/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-56", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "15/02/2027", "budget": 100000.00},
+  {"idTest": "TC-F1-57", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "15/11/2026", "budget": 100000.00},
+  {"idTest": "TC-F1-58", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 50000.01},
+  {"idTest": "TC-F1-59", "companyCIF": "A28015622", "projectAcronym": "PROJX1", "operationName": "Proyecto Alpha 1", "department": "HR", "date": "01/03/2026", "budget": 999999.99}
 ]

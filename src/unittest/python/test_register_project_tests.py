@@ -8,11 +8,13 @@ from uc3m_consulting import EnterpriseManager
 from uc3m_consulting import EnterpriseManagementException
 
 # pylint: disable=too-many-public-methods
+# pylint: disable=assignment-from-no-return
 class TestRegisterProject(unittest.TestCase):
     """All test cases for register_project will be here"""
 
     __path_data = str(Path.home()) + "/PycharmProjects/G801.2026.T10.EG2/src/unittest/data/"
-    __path_output = str(Path.home()) + "/PycharmProjects/G801.2026.T10.EG2/src/main/python/uc3m_consulting/data/"
+    __path_output = (str(Path.home()) +
+                     "/PycharmProjects/G801.2026.T10.EG2/src/main/python/uc3m_consulting/data/")
 
     @classmethod
     def setUpClass(cls):
@@ -22,8 +24,8 @@ class TestRegisterProject(unittest.TestCase):
                       encoding="UTF-8", mode="r") as json_file:
                 cls.__f1_test_data = json.load(json_file)
                 print("Data read is: " + str(cls.__f1_test_data))
-        except FileNotFoundError:
-            raise EnterpriseManagementException("Wrong file or path")
+        except FileNotFoundError as exc:
+            raise EnterpriseManagementException("Wrong file or path") from exc
         except json.JSONDecodeError:
             cls.__f1_test_data = []
 
@@ -631,6 +633,116 @@ class TestRegisterProject(unittest.TestCase):
                         input_data["operationName"], input_data["department"],
                         input_data["date"], input_data["budget"])
                 self.assertEqual(result.exception.message, "project already exists")
+
+    def test_register_project_tc_f1_50(self):
+        """TC-F1-50. project_acronym length exactly 6 (valid). Covers: VLV4"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-50":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_51(self):
+        """TC-F1-51. project_acronym length exactly 9 (valid). Covers: VLV5"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-51":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_52(self):
+        """TC-F1-52. operation_name length exactly 11 (valid). Covers: VLV8"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-52":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_53(self):
+        """TC-F1-53. operation_name length exactly 29 (valid). Covers: VLV9"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-53":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_54(self):
+        """TC-F1-54. date DD = 02 (valid). Covers: VLV12"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-54":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_55(self):
+        """TC-F1-55. date DD = 30 (valid). Covers: VLV13"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-55":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_56(self):
+        """TC-F1-56. date MM = 02 (valid). Covers: VLV16"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-56":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_57(self):
+        """TC-F1-57. date MM = 11 (valid). Covers: VLV17"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-57":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_58(self):
+        """TC-F1-58. budget = 50000.01 (valid). Covers: VLV23"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-58":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
+
+    def test_register_project_tc_f1_59(self):
+        """TC-F1-59. budget = 999999.99 (valid). Covers: VLV24"""
+        for input_data in self.__f1_test_data:
+            if input_data["idTest"] == "TC-F1-59":
+                manager = EnterpriseManager()
+                result = manager.register_project(
+                    input_data["companyCIF"], input_data["projectAcronym"],
+                    input_data["operationName"], input_data["department"],
+                    input_data["date"], input_data["budget"])
+                self.assertEqual(len(result), 32)
 
 
 if __name__ == "__main__":
