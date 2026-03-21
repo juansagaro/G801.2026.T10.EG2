@@ -1,7 +1,7 @@
 """Module """
-from .enterprise_management_exception import EnterpriseManagementException
 import re
-from datetime import datetime, date
+from datetime import datetime
+from .enterprise_management_exception import EnterpriseManagementException
 
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
@@ -30,6 +30,7 @@ class EnterpriseManager:
 
     # pylint: disable=too-many-arguments
     # pylint: disable=too-many-positional-arguments
+    # pylint: disable=too-many-branches
     def register_project(self, company_cif: str, project_acronym: str,
                          operation_name: str, department: str,
                          date: str, budget: float):
@@ -90,6 +91,14 @@ class EnterpriseManager:
 
         if not 2025 <= year <= 2027:
             raise EnterpriseManagementException("date year is not valid")
+
+        try:
+            date_obj = datetime.strptime(date, "%d/%m/%Y").date()
+        except ValueError as exc:
+            raise EnterpriseManagementException("date is not a valid date") from exc
+
+        if date_obj < datetime.today().date():
+            raise EnterpriseManagementException("date must be today or in the future")
 
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
