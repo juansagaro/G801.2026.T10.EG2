@@ -47,6 +47,10 @@ class EnterpriseManager:
 
         if not self.__validate_cif_algorithm(company_cif):
             raise EnterpriseManagementException("Invalid CIF code")
+
+        if not isinstance(project_acronym, str):
+            raise EnterpriseManagementException("project_acronym is not a valid string")
+
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
