@@ -57,8 +57,15 @@ class EnterpriseManager:
         if not project_acronym.isalnum() or not project_acronym.isupper():
             raise EnterpriseManagementException("project_acronym contains invalid characters")
 
+        if not isinstance(operation_name, str):
+            raise EnterpriseManagementException("operation_name is not a valid string")
+
+        if not 10 <= len(operation_name) <= 30:
+            raise EnterpriseManagementException("operation_name length is not valid")
+
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
     def check_project_budget(self, project_id: str):
         """Calculates the balance of a project"""
+
