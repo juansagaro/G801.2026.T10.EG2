@@ -1,5 +1,7 @@
 """Module """
 from .enterprise_management_exception import EnterpriseManagementException
+import re
+from datetime import datetime, date
 
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
@@ -68,6 +70,12 @@ class EnterpriseManager:
 
         if department not in ("HR", "FINANCE", "LEGAL", "LOGISTICS"):
             raise EnterpriseManagementException("department value is not valid")
+
+        if not isinstance(date, str):
+            raise EnterpriseManagementException("date is not a valid string")
+
+        if not re.match(r"^\d{2}/\d{2}/\d{4}$", date):
+            raise EnterpriseManagementException("date format is not valid")
 
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
