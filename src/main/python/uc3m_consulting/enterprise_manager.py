@@ -27,6 +27,9 @@ class EnterpriseManager:
         if not company_cif[0].isalpha():
             raise EnterpriseManagementException("CIF must start with a letter")
 
+        if not company_cif[1:8].isdigit():
+            raise EnterpriseManagementException("Invalid CIF code")
+
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
