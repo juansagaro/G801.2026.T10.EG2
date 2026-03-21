@@ -77,6 +77,20 @@ class EnterpriseManager:
         if not re.match(r"^\d{2}/\d{2}/\d{4}$", date):
             raise EnterpriseManagementException("date format is not valid")
 
+        parts = date.split("/")
+        day = int(parts[0])
+        month = int(parts[1])
+        year = int(parts[2])
+
+        if not 1 <= day <= 31:
+            raise EnterpriseManagementException("date day is not valid")
+
+        if not 1 <= month <= 12:
+            raise EnterpriseManagementException("date month is not valid")
+
+        if not 2025 <= year <= 2027:
+            raise EnterpriseManagementException("date year is not valid")
+
     def register_document(self, input_file: str):
         """Registers a document associated to a project"""
 
